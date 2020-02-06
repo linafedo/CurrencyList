@@ -3,25 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		251962CFE133384C9380CBEE /* Pods_testProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC3C01AB71A48CB67DEAFE3 /* Pods_testProject.framework */; };
+		4F5D11FA23EC3F1500754293 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D11F923EC3F1500754293 /* RatesViewController.swift */; };
+		4F5D11FC23EC405E00754293 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F5D11FB23EC405E00754293 /* Default-568h@2x.png */; };
 		4F805D9A23EB1CB30059C671 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F805D9923EB1CB30059C671 /* AppDelegate.swift */; };
 		4F805D9E23EB1CB30059C671 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F805D9D23EB1CB30059C671 /* ViewController.swift */; };
-		4F805DA123EB1CB30059C671 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F805D9F23EB1CB30059C671 /* Main.storyboard */; };
 		4F805DA323EB1CB60059C671 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F805DA223EB1CB60059C671 /* Assets.xcassets */; };
-		4F805DA623EB1CB60059C671 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F805DA423EB1CB60059C671 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F5D11F923EC3F1500754293 /* RatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
+		4F5D11FB23EC405E00754293 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4F805D9623EB1CB30059C671 /* testProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F805D9923EB1CB30059C671 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F805D9D23EB1CB30059C671 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4F805DA023EB1CB30059C671 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F805DA223EB1CB60059C671 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4F805DA523EB1CB60059C671 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F805DA723EB1CB60059C671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3A33149C35AC4856079DA57 /* Pods-testProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testProject.debug.xcconfig"; path = "Target Support Files/Pods-testProject/Pods-testProject.debug.xcconfig"; sourceTree = "<group>"; };
 		BBE8D7745F6B48A1E817C73C /* Pods-testProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testProject.release.xcconfig"; path = "Target Support Files/Pods-testProject/Pods-testProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -58,6 +58,7 @@
 		4F5D11F723EC359500754293 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F5D11F923EC3F1500754293 /* RatesViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -72,6 +73,7 @@
 		4F805D8D23EB1CB30059C671 = {
 			isa = PBXGroup;
 			children = (
+				4F5D11FB23EC405E00754293 /* Default-568h@2x.png */,
 				4F805D9823EB1CB30059C671 /* testProject */,
 				4F805D9723EB1CB30059C671 /* Products */,
 				BEB217D3DEB2862AB733608A /* Pods */,
@@ -95,9 +97,7 @@
 				4F5D11F723EC359500754293 /* View */,
 				4F805D9923EB1CB30059C671 /* AppDelegate.swift */,
 				4F805D9D23EB1CB30059C671 /* ViewController.swift */,
-				4F805D9F23EB1CB30059C671 /* Main.storyboard */,
 				4F805DA223EB1CB60059C671 /* Assets.xcassets */,
-				4F805DA423EB1CB60059C671 /* LaunchScreen.storyboard */,
 				4F805DA723EB1CB60059C671 /* Info.plist */,
 			);
 			path = testProject;
@@ -109,7 +109,6 @@
 				B3A33149C35AC4856079DA57 /* Pods-testProject.debug.xcconfig */,
 				BBE8D7745F6B48A1E817C73C /* Pods-testProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -173,9 +172,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F805DA623EB1CB60059C671 /* LaunchScreen.storyboard in Resources */,
 				4F805DA323EB1CB60059C671 /* Assets.xcassets in Resources */,
-				4F805DA123EB1CB30059C671 /* Main.storyboard in Resources */,
+				4F5D11FC23EC405E00754293 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,30 +227,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F805D9E23EB1CB30059C671 /* ViewController.swift in Sources */,
+				4F5D11FA23EC3F1500754293 /* RatesViewController.swift in Sources */,
 				4F805D9A23EB1CB30059C671 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		4F805D9F23EB1CB30059C671 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F805DA023EB1CB30059C671 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4F805DA423EB1CB60059C671 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4F805DA523EB1CB60059C671 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4F805DA823EB1CB60059C671 /* Debug */ = {
