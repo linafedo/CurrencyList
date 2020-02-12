@@ -11,5 +11,6 @@ Build/
 
 # CocoaPods
 *.xcworkspace
+
 Pods/
 *.gitignore
