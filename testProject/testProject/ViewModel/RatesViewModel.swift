@@ -24,9 +24,9 @@ class RatesViewModel {
         return self.items.count
     }
     
-    weak var viewDelegate: RatesVCDelegate?
+    weak var viewDelegate: RatesVMDelegate?
     
-    init(viewDelegate: RatesVCDelegate) {
+    init(viewDelegate: RatesVMDelegate) {
         self.viewDelegate = viewDelegate
         
         self.getLocalRates()

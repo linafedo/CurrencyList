@@ -1,5 +1,5 @@
 //
-//  RatesVCDelegate.swift
+//  RatesVMDelegate.swift
 //  testProject
 //
 //  Created by Galina Fedorova on 06.02.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RatesVCDelegate: class {
+protocol RatesVMDelegate: class {
     func reloadData()
 }
 

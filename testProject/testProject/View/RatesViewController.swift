@@ -82,7 +82,7 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - View model delegate
 
-extension RatesViewController: RatesVCDelegate {
+extension RatesViewController: RatesVMDelegate {
 
     func reloadData() {
         self.tableView.reloadData()
