@@ -9,7 +9,6 @@
 import Foundation
 
 typealias NetworkRouterCompletion = (_ data: Data?, _ response: NetworkResponse?, _ error: Error?) -> ()
-typealias HTTPHeaders = [String: String]
 typealias Parameters = [String: Any]
 
 protocol NetworkServiceProtocol {

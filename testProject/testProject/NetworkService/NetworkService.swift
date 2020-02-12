@@ -50,18 +50,16 @@ class NetworkService: NetworkServiceProtocol {
 extension NetworkService {
     
     private func buildRequest(from route: EndPoint) throws -> URLRequest {
-
-        var request = URLRequest(url: route.baseUrl.appendingPathComponent(route.path),
+        
+        guard let baseUrl = URL(string: Utility.baseRequestUrl) else {
+            throw NetworkError.missingUrl
+        }
+        
+        var request = URLRequest(url: baseUrl.appendingPathComponent(route.path),
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                  timeoutInterval: 10.0)
         
         request.httpMethod = route.httpMethod.rawValue
-        
-        if !route.headers.isEmpty {
-            for (key, value) in route.headers {
-                request.setValue(value, forHTTPHeaderField: key)
-            }
-        }
         
         if !route.parameters.isEmpty {
             do {

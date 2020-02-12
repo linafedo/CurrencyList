@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		251962CFE133384C9380CBEE /* Pods_testProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC3C01AB71A48CB67DEAFE3 /* Pods_testProject.framework */; };
+		008281839A14BAF65BC27C24 /* Pods_testProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F57EF86E18031FED174421 /* Pods_testProject.framework */; };
+		4F5AFE7723EC7BF0004EDF34 /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AFE7623EC7BF0004EDF34 /* RateCell.swift */; };
+		4F5AFE7A23EC7C2D004EDF34 /* RateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5AFE7923EC7C2D004EDF34 /* RateCell.xib */; };
 		4F5D11FA23EC3F1500754293 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D11F923EC3F1500754293 /* RatesViewController.swift */; };
 		4F5D11FC23EC405E00754293 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F5D11FB23EC405E00754293 /* Default-568h@2x.png */; };
 		4F5D11FF23EC422C00754293 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D11FE23EC422C00754293 /* UIImageView+Extension.swift */; };
@@ -21,11 +23,23 @@
 		4F5D121E23EC4BEF00754293 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D121D23EC4BEF00754293 /* URLParameterEncoder.swift */; };
 		4F5D122023EC4C0600754293 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D121F23EC4C0600754293 /* JSONParameterEncoder.swift */; };
 		4F5D122223EC53C900754293 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D122123EC53C900754293 /* HTTPMethod.swift */; };
+		4F5D122423EC565000754293 /* RatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D122323EC565000754293 /* RatesViewModel.swift */; };
+		4F5D122623EC569B00754293 /* RateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D122523EC569B00754293 /* RateViewModel.swift */; };
+		4F5D122823EC64BC00754293 /* RatesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D122723EC64BC00754293 /* RatesRepository.swift */; };
+		4F5D122C23EC672300754293 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D122B23EC672300754293 /* Utility.swift */; };
+		4F5D122E23EC6BF200754293 /* RateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D122D23EC6BF200754293 /* RateItem.swift */; };
+		4F5DF33123F2F1A400C1EB07 /* RateDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5DF33023F2F1A400C1EB07 /* RateDataBase.swift */; };
+		4F5DF33523F2F35200C1EB07 /* RateDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5DF33423F2F35200C1EB07 /* RateDBModel.swift */; };
 		4F805D9A23EB1CB30059C671 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F805D9923EB1CB30059C671 /* AppDelegate.swift */; };
 		4F805DA323EB1CB60059C671 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F805DA223EB1CB60059C671 /* Assets.xcassets */; };
+		4F99EE7A23ECA2E7000898F2 /* RatesVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99EE7923ECA2E7000898F2 /* RatesVCDelegate.swift */; };
+		4F99EE7C23ECA5FB000898F2 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99EE7B23ECA5FB000898F2 /* RepositoryProtocol.swift */; };
+		4F99EE8923F2DFD0000898F2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F99EE8823F2DFD0000898F2 /* Realm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F5AFE7623EC7BF0004EDF34 /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
+		4F5AFE7923EC7C2D004EDF34 /* RateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateCell.xib; sourceTree = "<group>"; };
 		4F5D11F923EC3F1500754293 /* RatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
 		4F5D11FB23EC405E00754293 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4F5D11FE23EC422C00754293 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -41,13 +55,26 @@
 		4F5D121D23EC4BEF00754293 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		4F5D121F23EC4C0600754293 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		4F5D122123EC53C900754293 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		4F5D122323EC565000754293 /* RatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewModel.swift; sourceTree = "<group>"; };
+		4F5D122523EC569B00754293 /* RateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewModel.swift; sourceTree = "<group>"; };
+		4F5D122723EC64BC00754293 /* RatesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesRepository.swift; sourceTree = "<group>"; };
+		4F5D122B23EC672300754293 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		4F5D122D23EC6BF200754293 /* RateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateItem.swift; sourceTree = "<group>"; };
+		4F5DF33023F2F1A400C1EB07 /* RateDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateDataBase.swift; sourceTree = "<group>"; };
+		4F5DF33423F2F35200C1EB07 /* RateDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateDBModel.swift; sourceTree = "<group>"; };
 		4F805D9623EB1CB30059C671 /* testProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F805D9923EB1CB30059C671 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F805DA223EB1CB60059C671 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F805DA723EB1CB60059C671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F99EE7923ECA2E7000898F2 /* RatesVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesVCDelegate.swift; sourceTree = "<group>"; };
+		4F99EE7B23ECA5FB000898F2 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		4F99EE7D23F2DF1E000898F2 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F99EE8123F2DF89000898F2 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F99EE8323F2DFA5000898F2 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F99EE8823F2DFD0000898F2 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A33149C35AC4856079DA57 /* Pods-testProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testProject.debug.xcconfig"; path = "Target Support Files/Pods-testProject/Pods-testProject.debug.xcconfig"; sourceTree = "<group>"; };
+		B5F57EF86E18031FED174421 /* Pods_testProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE8D7745F6B48A1E817C73C /* Pods-testProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testProject.release.xcconfig"; path = "Target Support Files/Pods-testProject/Pods-testProject.release.xcconfig"; sourceTree = "<group>"; };
-		BDC3C01AB71A48CB67DEAFE3 /* Pods_testProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				251962CFE133384C9380CBEE /* Pods_testProject.framework in Frameworks */,
+				4F99EE8923F2DFD0000898F2 /* Realm.framework in Frameworks */,
+				008281839A14BAF65BC27C24 /* Pods_testProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,16 +93,32 @@
 		2F504FECB783E7AAE1B5906C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F99EE8823F2DFD0000898F2 /* Realm.framework */,
+				4F99EE8323F2DFA5000898F2 /* Realm.framework */,
+				4F99EE8123F2DF89000898F2 /* RealmSwift.framework */,
+				4F99EE7D23F2DF1E000898F2 /* RealmSwift.framework */,
 				4F5D120923EC48D000754293 /* Realm.framework */,
 				4F5D120523EC48A700754293 /* Realm.framework */,
-				BDC3C01AB71A48CB67DEAFE3 /* Pods_testProject.framework */,
+				B5F57EF86E18031FED174421 /* Pods_testProject.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F5AFE7823EC7C18004EDF34 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4F5AFE7623EC7BF0004EDF34 /* RateCell.swift */,
+				4F5AFE7923EC7C2D004EDF34 /* RateCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4F5D11F623EC358D00754293 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4F5DF33323F2F31600C1EB07 /* Repository */,
+				4F5DF33223F2F30800C1EB07 /* DataBase */,
+				4F5D122D23EC6BF200754293 /* RateItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -82,7 +126,9 @@
 		4F5D11F723EC359500754293 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4F5AFE7823EC7C18004EDF34 /* Cells */,
 				4F5D11F923EC3F1500754293 /* RatesViewController.swift */,
+				4F99EE7923ECA2E7000898F2 /* RatesVCDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,6 +136,8 @@
 		4F5D11F823EC359700754293 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4F5D122323EC565000754293 /* RatesViewModel.swift */,
+				4F5D122523EC569B00754293 /* RateViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -97,7 +145,7 @@
 		4F5D11FD23EC420B00754293 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				4F5D11FE23EC422C00754293 /* UIImageView+Extension.swift */,
+				4F5D122B23EC672300754293 /* Utility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -134,6 +182,32 @@
 			path = Encoding;
 			sourceTree = "<group>";
 		};
+		4F5D123023EC6F4B00754293 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4F5D11FE23EC422C00754293 /* UIImageView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4F5DF33223F2F30800C1EB07 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				4F5DF33023F2F1A400C1EB07 /* RateDataBase.swift */,
+				4F5DF33423F2F35200C1EB07 /* RateDBModel.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		4F5DF33323F2F31600C1EB07 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				4F99EE7B23ECA5FB000898F2 /* RepositoryProtocol.swift */,
+				4F5D122723EC64BC00754293 /* RatesRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		4F805D8D23EB1CB30059C671 = {
 			isa = PBXGroup;
 			children = (
@@ -158,10 +232,11 @@
 			isa = PBXGroup;
 			children = (
 				4F5D11F623EC358D00754293 /* Model */,
-				4F5D11F723EC359500754293 /* View */,
 				4F5D11F823EC359700754293 /* ViewModel */,
+				4F5D11F723EC359500754293 /* View */,
 				4F5D120D23EC4A9D00754293 /* NetworkService */,
 				4F5D120023EC427900754293 /* Resources */,
+				4F5D123023EC6F4B00754293 /* Extensions */,
 				4F5D11FD23EC420B00754293 /* Utility */,
 				4F805DA223EB1CB60059C671 /* Assets.xcassets */,
 				4F805DA723EB1CB60059C671 /* Info.plist */,
@@ -189,7 +264,7 @@
 				4F805D9223EB1CB30059C671 /* Sources */,
 				4F805D9323EB1CB30059C671 /* Frameworks */,
 				4F805D9423EB1CB30059C671 /* Resources */,
-				4F671C93189FE1DC17D817DF /* [CP] Embed Pods Frameworks */,
+				FE5A5AE4BF02903EF97B21AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F5D120423EC432200754293 /* CountryAbbreviations.json  in Resources */,
+				4F5AFE7A23EC7C2D004EDF34 /* RateCell.xib in Resources */,
 				4F805DA323EB1CB60059C671 /* Assets.xcassets in Resources */,
 				4F5D11FC23EC405E00754293 /* Default-568h@2x.png in Resources */,
 			);
@@ -247,23 +323,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4F671C93189FE1DC17D817DF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-testProject/Pods-testProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-testProject/Pods-testProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testProject/Pods-testProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		EC92FF12E355C1F6D8DA6893 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,6 +345,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FE5A5AE4BF02903EF97B21AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-testProject/Pods-testProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-testProject/Pods-testProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testProject/Pods-testProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -293,11 +369,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5D122823EC64BC00754293 /* RatesRepository.swift in Sources */,
+				4F99EE7C23ECA5FB000898F2 /* RepositoryProtocol.swift in Sources */,
 				4F5D11FA23EC3F1500754293 /* RatesViewController.swift in Sources */,
+				4F5AFE7723EC7BF0004EDF34 /* RateCell.swift in Sources */,
 				4F5D121E23EC4BEF00754293 /* URLParameterEncoder.swift in Sources */,
+				4F5D122423EC565000754293 /* RatesViewModel.swift in Sources */,
 				4F805D9A23EB1CB30059C671 /* AppDelegate.swift in Sources */,
+				4F5D122E23EC6BF200754293 /* RateItem.swift in Sources */,
 				4F5D121723EC4B3F00754293 /* ParameterEncoder.swift in Sources */,
+				4F5D122623EC569B00754293 /* RateViewModel.swift in Sources */,
 				4F5D121523EC4B3100754293 /* NetworkResponse.swift in Sources */,
+				4F99EE7A23ECA2E7000898F2 /* RatesVCDelegate.swift in Sources */,
+				4F5DF33523F2F35200C1EB07 /* RateDBModel.swift in Sources */,
 				4F5D121B23EC4B9400754293 /* NetworkServiceProtocol.swift in Sources */,
 				4F5D11FF23EC422C00754293 /* UIImageView+Extension.swift in Sources */,
 				4F5D121123EC4AF800754293 /* EndPointType.swift in Sources */,
@@ -305,6 +389,8 @@
 				4F5D122023EC4C0600754293 /* JSONParameterEncoder.swift in Sources */,
 				4F5D121923EC4B4F00754293 /* NetworkError.swift in Sources */,
 				4F5D120F23EC4ABB00754293 /* NetworkService.swift in Sources */,
+				4F5DF33123F2F1A400C1EB07 /* RateDataBase.swift in Sources */,
+				4F5D122C23EC672300754293 /* Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

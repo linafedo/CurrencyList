@@ -1,5 +1,5 @@
 //
-//  EndPointType.swift
+//  RatesVCDelegate.swift
 //  testProject
 //
 //  Created by Galina Fedorova on 06.02.2020.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct EndPoint {
-    let path: String
-    let httpMethod: HTTPMethod
-    let parameters: Parameters
+protocol RatesVCDelegate: class {
+    func reloadData()
 }
+
