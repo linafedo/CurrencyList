@@ -13,7 +13,6 @@
 		4F5D11FA23EC3F1500754293 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D11F923EC3F1500754293 /* RatesViewController.swift */; };
 		4F5D11FC23EC405E00754293 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F5D11FB23EC405E00754293 /* Default-568h@2x.png */; };
 		4F5D11FF23EC422C00754293 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D11FE23EC422C00754293 /* UIImageView+Extension.swift */; };
-		4F5D120423EC432200754293 /* CountryAbbreviations.json  in Resources */ = {isa = PBXBuildFile; fileRef = 4F5D120323EC432200754293 /* CountryAbbreviations.json  */; };
 		4F5D120F23EC4ABB00754293 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D120E23EC4ABB00754293 /* NetworkService.swift */; };
 		4F5D121123EC4AF800754293 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D121023EC4AF800754293 /* EndPointType.swift */; };
 		4F5D121523EC4B3100754293 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D121423EC4B3100754293 /* NetworkResponse.swift */; };
@@ -35,6 +34,7 @@
 		4F99EE7A23ECA2E7000898F2 /* RatesVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99EE7923ECA2E7000898F2 /* RatesVCDelegate.swift */; };
 		4F99EE7C23ECA5FB000898F2 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99EE7B23ECA5FB000898F2 /* RepositoryProtocol.swift */; };
 		4F99EE8923F2DFD0000898F2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F99EE8823F2DFD0000898F2 /* Realm.framework */; };
+		4FB32EFB23F4652F009F1FB6 /* CountryAbbr.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FB32EFA23F4652F009F1FB6 /* CountryAbbr.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,6 @@
 		4F5D11F923EC3F1500754293 /* RatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
 		4F5D11FB23EC405E00754293 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4F5D11FE23EC422C00754293 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
-		4F5D120323EC432200754293 /* CountryAbbreviations.json  */ = {isa = PBXFileReference; explicitFileType = text.json; path = "CountryAbbreviations.json "; sourceTree = "<group>"; };
 		4F5D120523EC48A700754293 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5D120923EC48D000754293 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F5D120E23EC4ABB00754293 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 		4F99EE8123F2DF89000898F2 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F99EE8323F2DFA5000898F2 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F99EE8823F2DFD0000898F2 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FB32EFA23F4652F009F1FB6 /* CountryAbbr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryAbbr.json; sourceTree = "<group>"; };
 		B3A33149C35AC4856079DA57 /* Pods-testProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testProject.debug.xcconfig"; path = "Target Support Files/Pods-testProject/Pods-testProject.debug.xcconfig"; sourceTree = "<group>"; };
 		B5F57EF86E18031FED174421 /* Pods_testProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_testProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE8D7745F6B48A1E817C73C /* Pods-testProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testProject.release.xcconfig"; path = "Target Support Files/Pods-testProject/Pods-testProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		4F5D120023EC427900754293 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4F5D120323EC432200754293 /* CountryAbbreviations.json  */,
+				4FB32EFA23F4652F009F1FB6 /* CountryAbbr.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -235,9 +235,9 @@
 				4F5D11F823EC359700754293 /* ViewModel */,
 				4F5D11F723EC359500754293 /* View */,
 				4F5D120D23EC4A9D00754293 /* NetworkService */,
-				4F5D120023EC427900754293 /* Resources */,
 				4F5D123023EC6F4B00754293 /* Extensions */,
 				4F5D11FD23EC420B00754293 /* Utility */,
+				4F5D120023EC427900754293 /* Resources */,
 				4F805DA223EB1CB60059C671 /* Assets.xcassets */,
 				4F805DA723EB1CB60059C671 /* Info.plist */,
 			);
@@ -313,7 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F5D120423EC432200754293 /* CountryAbbreviations.json  in Resources */,
+				4FB32EFB23F4652F009F1FB6 /* CountryAbbr.json in Resources */,
 				4F5AFE7A23EC7C2D004EDF34 /* RateCell.xib in Resources */,
 				4F805DA323EB1CB60059C671 /* Assets.xcassets in Resources */,
 				4F5D11FC23EC405E00754293 /* Default-568h@2x.png in Resources */,

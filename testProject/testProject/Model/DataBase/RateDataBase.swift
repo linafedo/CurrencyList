@@ -49,4 +49,16 @@ extension RateDataBase {
         }
     }
     
+    static func contains(by currency: String) -> Bool {
+        guard let r = try? Realm() else { return false }
+        
+        if let list = r.objects(RatesList.self).first {
+            if let _ = list.items
+                .filter({ $0.currency == currency}).first {
+                return true
+            }
+        }
+        return false
+    }
+    
 }

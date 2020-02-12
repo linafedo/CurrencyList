@@ -44,7 +44,8 @@ class RatesRepository: RepositoryProtocol {
                 var rateItems = [RateItem]()
                 
                 for item in items {
-                    let rateItem = RateItem(currencyName: item.currency,
+                    let rateItem = RateItem(currency: item.currency,
+                                            countryName: item.countryName,
                                             rate: item.rate)
                     rateItems.append(rateItem)
                 }
@@ -76,6 +77,10 @@ extension RatesRepository {
                 let item = RateDBModel()
                 item.currency = key
                 item.rate = round(1000 * value) / 1000
+                
+                if !RateDataBase.contains(by: key) {
+                    item.countryName = self.getCountryDescription(for: key)
+                }
 
                 items.append(item)
             }
@@ -83,5 +88,27 @@ extension RatesRepository {
             return items
         }
         return []
+    }
+}
+
+// MARK: - Utility
+
+extension RatesRepository {
+    
+    private func getCountryDescription(for currency: String) -> String? {
+        
+        let shortCode = String(currency.prefix(2))
+        
+        if let jsonPath: String = Bundle.main.path(forResource: "CountryAbbr", ofType: "json"),
+            let jsonData: Data = NSData(contentsOfFile: jsonPath) as Data? {
+            
+            do {
+                if let jsonResponse = try? JSONSerialization.jsonObject(with: jsonData, options: []),
+                    let json = jsonResponse as? [String: Any] {
+                    return json[shortCode] as? String
+                }
+            }
+        }
+        return nil
     }
 }

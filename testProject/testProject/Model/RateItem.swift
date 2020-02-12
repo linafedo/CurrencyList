@@ -9,6 +9,7 @@
 import Foundation
 
 struct RateItem {
-    let currencyName: String
+    let currency: String
+    let countryName: String?
     let rate: Double
 }

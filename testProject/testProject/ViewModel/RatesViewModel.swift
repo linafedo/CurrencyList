@@ -20,11 +20,11 @@ class RatesViewModel {
         }
     }
     
-    weak var viewDelegate: RatesVCDelegate?
-    
     var numberOfItems: Int {
         return self.items.count
     }
+    
+    weak var viewDelegate: RatesVCDelegate?
     
     init(viewDelegate: RatesVCDelegate) {
         self.viewDelegate = viewDelegate
@@ -66,11 +66,11 @@ extension RatesViewModel {
         var models = [RateViewModel]()
         
         for item in items {
-            let code = String(item.currencyName.prefix(2))
+            let code = String(item.currency.prefix(2))
             let imageUrl = Utility.getImageUrl(for: code)
             
-            let model = RateViewModel(currencyName: item.currencyName,
-                                      countryName: item.currencyName + "???",
+            let model = RateViewModel(currencyName: item.currency,
+                                      countryName: item.countryName,
                                       rate: String(item.rate),
                                       imageUrl: imageUrl)
             models.append(model)
