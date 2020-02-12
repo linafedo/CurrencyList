@@ -10,7 +10,7 @@ import UIKit
 
 class RatesViewController: UIViewController {
 
-    private var ratesViewModel: RatesViewModel!
+    lazy private var ratesViewModel = RatesViewModel(viewDelegate: self)
     var tableView: UITableView!
 
 }
@@ -34,7 +34,6 @@ extension RatesViewController {
     private func setup() {
         self.view.backgroundColor = .red
         self.setupTableView()
-        self.configViewModel()
     }
     
     private func setupTableView() {
@@ -51,10 +50,6 @@ extension RatesViewController {
         self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         self.tableView.register(UINib(nibName: "RateCell", bundle: nil), forCellReuseIdentifier: "RateCell")
-    }
-    
-    private func configViewModel() {
-        self.ratesViewModel = RatesViewModel(viewDelegate: self)
     }
 
 }
