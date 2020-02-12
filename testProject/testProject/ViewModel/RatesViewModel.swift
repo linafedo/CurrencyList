@@ -42,8 +42,7 @@ class RatesViewModel {
     
     @objc private func fetchRemoteRates() {
         self.repository.fetchRemotesRates() { [weak self] in
-            guard let self = self else { return }
-            self.getLocalRates()
+            self?.getLocalRates()
         }
     }
     
