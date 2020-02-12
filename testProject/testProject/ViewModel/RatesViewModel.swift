@@ -12,7 +12,7 @@ class RatesViewModel {
     
     private let repository: RepositoryProtocol = RatesRepository()
 
-    var timer = Timer()
+    private var timer = Timer()
     
     var items = [RateViewModel]() {
         didSet {
