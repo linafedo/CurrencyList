@@ -36,8 +36,7 @@ class RatesViewModel {
     
     private func getLocalRates() {
         self.repository.getLocalRates { [weak self] (models) in
-            guard let self = self else { return }
-            self.items = self.map(items: models)
+            self?.items = self?.map(items: models) ?? []
         }
     }
     
