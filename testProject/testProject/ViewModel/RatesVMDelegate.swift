@@ -11,4 +11,3 @@ import Foundation
 protocol RatesVMDelegate: class {
     func reloadData()
 }
-

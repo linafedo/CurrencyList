@@ -70,6 +70,7 @@ extension RatesRepository {
             let json = jsonResponse as? [String: Any],
             let rates = json["rates"] as? [String: Double] {
             
+            var countryNamesAray: [String: Any] = [:]
             var items = [RateDBModel]()
             
             for (key, value) in rates {
@@ -78,8 +79,17 @@ extension RatesRepository {
                 item.currency = key
                 item.rate = round(1000 * value) / 1000
                 
+                // if there is no item in db - it needs to get a country name
+                
                 if !RateDataBase.contains(by: key) {
-                    item.countryName = self.getCountryDescription(for: key)
+                    
+                    // if array is empty - add items one time
+                    if countryNamesAray.isEmpty {
+                        countryNamesAray = self.getCountryNamesArray()
+                    }
+                    
+                    let code = String(key.prefix(2))
+                    item.countryName = countryNamesAray[code] as? String
                 }
 
                 items.append(item)
@@ -95,20 +105,19 @@ extension RatesRepository {
 
 extension RatesRepository {
     
-    private func getCountryDescription(for currency: String) -> String? {
-        
-        let shortCode = String(currency.prefix(2))
-        
+    private func getCountryNamesArray() -> [String: Any] {
         if let jsonPath: String = Bundle.main.path(forResource: "CountryAbbr", ofType: "json"),
             let jsonData: Data = NSData(contentsOfFile: jsonPath) as Data? {
             
             do {
                 if let jsonResponse = try? JSONSerialization.jsonObject(with: jsonData, options: []),
                     let json = jsonResponse as? [String: Any] {
-                    return json[shortCode] as? String
+                    return json
                 }
             }
         }
-        return nil
+        
+        return [:]
     }
+
 }
