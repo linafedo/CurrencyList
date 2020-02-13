@@ -12,13 +12,13 @@ enum NetworkResponse {
     case success
     case badRequest
     case failed
-    case authenticationError
+    case serverError
     
     static func handleNetworkResponse(_ response: HTTPURLResponse) -> NetworkResponse {
         switch response.statusCode {
         case 200...299: return .success
-        case 401...500: return .authenticationError
-        case 501...599: return .badRequest
+        case 400...499: return .badRequest
+        case 500...599: return .serverError
         default: return .failed
         }
     }
