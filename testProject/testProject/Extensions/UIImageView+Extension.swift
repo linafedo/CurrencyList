@@ -7,8 +7,9 @@
 //
 
 import Foundation
-
 import UIKit
+
+// MARK: - rounded image view
 
 extension UIImageView {
     
@@ -19,4 +20,18 @@ extension UIImageView {
         self.layer.cornerRadius = self.frame.height/2
         self.clipsToBounds = true
     }
+}
+
+// MARK: - load image
+
+extension UIImageView {
+
+    func loadImage(url: URL) {
+        ImageLoader.loadImage(url: url) { (image) in
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
+    }
+
 }

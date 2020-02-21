@@ -20,9 +20,12 @@ class RateCell: UITableViewCell {
 extension RateCell {
     
     func setup(model: RateViewModel) {
-//        self.rateImageView.
         self.rateNameLabel.text = model.currencyName
         self.countryNameLabel.text = model.countryName
         self.rateTextField.text = model.rate
+        
+        if let url = model.imageUrl {
+            self.rateImageView.loadImage(url: url)
+        }
     }
 }

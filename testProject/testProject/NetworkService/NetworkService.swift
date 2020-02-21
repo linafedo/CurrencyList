@@ -26,6 +26,11 @@ class NetworkService: NetworkServiceProtocol {
             
             task = session.dataTask(with: request, completionHandler: { (data, response, error) in
                 
+                if let response = response as? HTTPURLResponse {
+                    NetworkService.logResponse(response, error: error, httmMethod: route.httpMethod)
+                }
+                
+                
                 if let data = data, let response = response as? HTTPURLResponse {
                     
                     let result = NetworkResponse.handleNetworkResponse(response)
@@ -42,7 +47,7 @@ class NetworkService: NetworkServiceProtocol {
         
         self.task?.resume()
     }
-    
+        
 }
 
 // MARK: - Utility
@@ -70,6 +75,30 @@ extension NetworkService {
         }
         
         return request
+    }
+    
+}
+
+private extension NetworkService {
+    
+    static func logResponse(_ response: HTTPURLResponse, error: Error?, httmMethod: HTTPMethod) {
+        let method = httmMethod.rawValue
+        let statusCode = response.statusCode
+        let responseStatus = NetworkResponse.handleNetworkResponse(response)
+        let url = response.url?.absoluteString ?? "UNKNOWN"
+        let xTime = response.allHeaderFields["x-processing-time"] ?? "missing"
+        let traceId = response.allHeaderFields["uber-trace-id"] ?? "missing"
+        
+        let errorText = error?.localizedDescription ?? ""
+        
+        print(
+            "Network ->\n\(method) (\(responseStatus.rawValue))\n" +
+                "URL: \(url)\n" +
+                "STATUS CODE: \(String(describing: statusCode))\n" +
+                "\(errorText.isEmpty ? "" : "Error: \(errorText)\n")" +
+                "X-TIME: \(xTime)\n" +
+            "Trace ID: \(traceId)\n"
+        )
     }
     
 }

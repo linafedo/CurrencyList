@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		008281839A14BAF65BC27C24 /* Pods_testProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F57EF86E18031FED174421 /* Pods_testProject.framework */; };
+		4F088AAB23F5690300816566 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F088AAA23F5690300816566 /* Cache.swift */; };
+		4F088AAE23F6C8C600816566 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F088AAD23F6C8C600816566 /* ImageLoader.swift */; };
 		4F5AFE7723EC7BF0004EDF34 /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5AFE7623EC7BF0004EDF34 /* RateCell.swift */; };
 		4F5AFE7A23EC7C2D004EDF34 /* RateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F5AFE7923EC7C2D004EDF34 /* RateCell.xib */; };
 		4F5D11FA23EC3F1500754293 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D11F923EC3F1500754293 /* RatesViewController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F088AAA23F5690300816566 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		4F088AAD23F6C8C600816566 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		4F5AFE7623EC7BF0004EDF34 /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
 		4F5AFE7923EC7C2D004EDF34 /* RateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateCell.xib; sourceTree = "<group>"; };
 		4F5D11F923EC3F1500754293 /* RatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,22 @@
 				B5F57EF86E18031FED174421 /* Pods_testProject.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F088AA923F568E300816566 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				4F088AAA23F5690300816566 /* Cache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		4F088AAC23F6C8AC00816566 /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				4F088AAD23F6C8C600816566 /* ImageLoader.swift */,
+			);
+			path = ImageLoader;
 			sourceTree = "<group>";
 		};
 		4F5AFE7823EC7C18004EDF34 /* Cells */ = {
@@ -234,6 +254,8 @@
 				4F5D11F623EC358D00754293 /* Model */,
 				4F5D11F823EC359700754293 /* ViewModel */,
 				4F5D11F723EC359500754293 /* View */,
+				4F088AAC23F6C8AC00816566 /* ImageLoader */,
+				4F088AA923F568E300816566 /* Cache */,
 				4F5D120D23EC4A9D00754293 /* NetworkService */,
 				4F5D123023EC6F4B00754293 /* Extensions */,
 				4F5D11FD23EC420B00754293 /* Utility */,
@@ -369,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F088AAB23F5690300816566 /* Cache.swift in Sources */,
 				4F5D122823EC64BC00754293 /* RatesRepository.swift in Sources */,
 				4F99EE7C23ECA5FB000898F2 /* RepositoryProtocol.swift in Sources */,
 				4F5D11FA23EC3F1500754293 /* RatesViewController.swift in Sources */,
@@ -382,6 +405,7 @@
 				4F5D121523EC4B3100754293 /* NetworkResponse.swift in Sources */,
 				4F99EE7A23ECA2E7000898F2 /* RatesVMDelegate.swift in Sources */,
 				4F5DF33523F2F35200C1EB07 /* RateDBModel.swift in Sources */,
+				4F088AAE23F6C8C600816566 /* ImageLoader.swift in Sources */,
 				4F5D121B23EC4B9400754293 /* NetworkServiceProtocol.swift in Sources */,
 				4F5D11FF23EC422C00754293 /* UIImageView+Extension.swift in Sources */,
 				4F5D121123EC4AF800754293 /* EndPointType.swift in Sources */,

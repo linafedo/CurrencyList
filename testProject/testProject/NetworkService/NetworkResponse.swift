@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum NetworkResponse {
+enum NetworkResponse: String {
     case success
     case badRequest
     case failed
