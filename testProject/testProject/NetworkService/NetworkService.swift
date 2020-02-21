@@ -30,7 +30,6 @@ class NetworkService: NetworkServiceProtocol {
                     NetworkService.logResponse(response, error: error, httmMethod: route.httpMethod)
                 }
                 
-                
                 if let data = data, let response = response as? HTTPURLResponse {
                     
                     let result = NetworkResponse.handleNetworkResponse(response)

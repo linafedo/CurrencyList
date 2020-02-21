@@ -31,6 +31,7 @@
 		4F5D122E23EC6BF200754293 /* RateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D122D23EC6BF200754293 /* RateItem.swift */; };
 		4F5DF33123F2F1A400C1EB07 /* RateDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5DF33023F2F1A400C1EB07 /* RateDataBase.swift */; };
 		4F5DF33523F2F35200C1EB07 /* RateDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5DF33423F2F35200C1EB07 /* RateDBModel.swift */; };
+		4F621F8623FFEC2800796E1D /* CacheError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F621F8523FFEC2800796E1D /* CacheError.swift */; };
 		4F805D9A23EB1CB30059C671 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F805D9923EB1CB30059C671 /* AppDelegate.swift */; };
 		4F805DA323EB1CB60059C671 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F805DA223EB1CB60059C671 /* Assets.xcassets */; };
 		4F99EE7A23ECA2E7000898F2 /* RatesVMDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F99EE7923ECA2E7000898F2 /* RatesVMDelegate.swift */; };
@@ -65,6 +66,7 @@
 		4F5D122D23EC6BF200754293 /* RateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateItem.swift; sourceTree = "<group>"; };
 		4F5DF33023F2F1A400C1EB07 /* RateDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateDataBase.swift; sourceTree = "<group>"; };
 		4F5DF33423F2F35200C1EB07 /* RateDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateDBModel.swift; sourceTree = "<group>"; };
+		4F621F8523FFEC2800796E1D /* CacheError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheError.swift; sourceTree = "<group>"; };
 		4F805D9623EB1CB30059C671 /* testProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F805D9923EB1CB30059C671 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F805DA223EB1CB60059C671 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				4F088AAA23F5690300816566 /* Cache.swift */,
+				4F621F8523FFEC2800796E1D /* CacheError.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				4F5D122623EC569B00754293 /* RateViewModel.swift in Sources */,
 				4F5D121523EC4B3100754293 /* NetworkResponse.swift in Sources */,
 				4F99EE7A23ECA2E7000898F2 /* RatesVMDelegate.swift in Sources */,
+				4F621F8623FFEC2800796E1D /* CacheError.swift in Sources */,
 				4F5DF33523F2F35200C1EB07 /* RateDBModel.swift in Sources */,
 				4F088AAE23F6C8C600816566 /* ImageLoader.swift in Sources */,
 				4F5D121B23EC4B9400754293 /* NetworkServiceProtocol.swift in Sources */,

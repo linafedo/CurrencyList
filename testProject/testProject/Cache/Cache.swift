@@ -29,19 +29,15 @@ final class Cache<Key: Hashable, Value> {
         self.wrapped.delegate = self.keyTracker
     }
 
-
-    func insert(_ value: Value, forKey key: Key) {
+    func insertToTampCache(_ value: Value, forKey key: Key) {
         let date = self.dateProvider().addingTimeInterval(entryLifeTime)
         let entry = Entry(key: key, value: value, expirationDate: date)
-
-
+        
         self.wrapped.setObject(entry, forKey: WrappedKey(key))
-
         self.keyTracker.keys.insert(key)
     }
     
-    func value(forKey key: Key) -> Value? {
-        
+    func valueFromTempCache(forKey key: Key) -> Value? {
         guard let entry = self.wrapped.object(forKey: WrappedKey(key)) else { return nil }
         
         if self.dateProvider() < entry.expirationDate {
@@ -57,11 +53,11 @@ final class Cache<Key: Hashable, Value> {
     }
     
     subscript(key: Key) -> Value? {
-        get { return self.value(forKey: key) }
+        get { return self.valueFromTempCache(forKey: key) }
         
         set {
             if let value = newValue {
-                self.insert(value, forKey: key)
+                self.insertToTampCache(value, forKey: key)
             } else {
                 self.removeValue(forKey: key)
             }
@@ -114,7 +110,7 @@ private extension Cache {
 private extension Cache {
     
     final class KeyTracker: NSObject, NSCacheDelegate {
-        
+
         var keys = Set<Key>()
         
         func cache(_ cache: NSCache<AnyObject, AnyObject>,
@@ -123,68 +119,27 @@ private extension Cache {
             guard let entry = object as? Entry else {
                 return
             }
-            
+            print(entry.key)
             self.keys.remove(entry.key)
         }
     }
     
 }
 
-extension Cache.Entry: Codable where Key: Codable, Value: Codable {}
-
-private extension Cache {
-
-    func entry(forKey key: Key) -> Entry? {
-        guard let entry = self.wrapped.object(forKey: WrappedKey(key)) else {
-            return nil
-        }
-
-        guard self.dateProvider() < entry.expirationDate else {
-            self.removeValue(forKey: key)
-            return nil
-        }
-
-        return entry
-    }
-
-    func insert(_ entry: Entry) {
-        self.wrapped.setObject(entry, forKey: WrappedKey(entry.key))
-        self.keyTracker.keys.insert(entry.key)
-    }
-}
-
-extension Cache: Codable where Key: Codable, Value: Codable {
-    
-    convenience init(from decoder: Decoder) throws {
-        self.init()
-
-        let container = try decoder.singleValueContainer()
-        let entries = try container.decode([Entry].self)
-        entries.forEach(insert)
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(keyTracker.keys.compactMap(entry))
-    }
-
-}
-
 extension Cache where Key: Codable, Value: Codable {
     
-    // get value from cache or file manager
     func getValue(forKey key: Key) -> Value? {
         guard let entry = self.wrapped.object(forKey: WrappedKey(key)) else {
-            let value = self.value(forKey: key)
+            let value = self.valueFromDisk(forKey: key)
             
-            // save item to local cache if there is it
             if let value = value {
-                self.insert(value, forKey: key)
+                print(Success.readFromDisk.description)
+                self.insertToTampCache(value, forKey: key)
             }
-
+            
             return value
         }
-
+        
         // check expiration date
         guard self.dateProvider() < entry.expirationDate else {
             self.removeValue(forKey: key)
@@ -192,67 +147,70 @@ extension Cache where Key: Codable, Value: Codable {
             
             return nil
         }
-
+        
+        print(Success.readFromCache.description)
         return entry.value
     }
-
-    // Insert file to cache and file manager
+    
     func insertValue(_ value: Value, forKey key: Key) {
         let date = self.dateProvider().addingTimeInterval(entryLifeTime)
         let entry = Entry(key: key, value: value, expirationDate: date)
         
         self.wrapped.setObject(entry, forKey: WrappedKey(entry.key))
         self.keyTracker.keys.insert(entry.key)
-        
-        do {
-            try self.saveToDisk(forKey: key)
-        } catch {
-            print("CACH: ", error)
-        }
-        
+        self.saveToDisk(forKey: key, value: value)
     }
     
-    private func saveToDisk(forKey key: Key) throws {
-        guard let key = key as? String else { return }
+    private func saveToDisk(forKey key: Key, value: Value) {
+        guard let key = key as? String else {
+            print("\(Error.save.description): \(Error.invalidName.description)")
+            return
+        }
+
         let cacheUrl = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let fileUrl = cacheUrl.appendingPathComponent(key + ".cache")
-        let data = try JSONEncoder().encode(self)
         
         do {
+            let data = try JSONEncoder().encode(value)
             try data.write(to: fileUrl, options: .atomic)
-            print("CACH: Записан файл в хранилище")
-
+            print(Success.saveToDisk.description, key)
         } catch {
-            print("CACH: Ощибка записи в хранилище", error.localizedDescription)
+            print(Error.save.rawValue, error.localizedDescription)
         }
     }
     
     private func removeFromDisk(forKey key: Key) {
-        guard let key = key as? String else { return }
+        guard let key = key as? String else {
+            print("\(Error.delete.description): \(Error.invalidName.description)")
+            return
+        }
+        
         let cacheUrl = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let fileUrl = cacheUrl.appendingPathComponent(key + ".cache")
         
         do {
             try fileManager.removeItem(at: fileUrl)
-            print("CACH: Файл удален из хранилища")
         } catch {
-            print("CACH: - Ощибка удаления файла с хранилища ", error.localizedDescription)
+            print(Error.delete.description, error.localizedDescription)
         }
     }
     
-    private func value(forKey key: Key) -> Value? {
-        guard let key = key as? String else { return nil }
+    private func valueFromDisk(forKey key: Key) -> Value? {
+        guard let key = key as? String else {
+            print("\(Error.read.description): \(Error.invalidName.description)")
+            return nil
+        }
+        
         let cacheUrl = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let fileUrl = cacheUrl.appendingPathComponent(key + ".cache")
 
         do {
             let data = try Data(contentsOf: fileUrl)
-            let entry = try JSONDecoder().decode(Array<Entry>.self.self, from: data)
-            print("CACH: -  чтение файла с хранилища успешно ", " for key \(key)", entry.forEach({ print($0.key)}))
-
-            return entry.first?.value
+            let value = try JSONDecoder().decode(Value.self, from: data)
+            
+            return value
         } catch {
-            print("CACH: ERROR GET VALUE FROM DISK - ", " \(fileUrl): \(error.localizedDescription)")
+            print(Error.read.description, error.localizedDescription)
         }
         
         return nil
