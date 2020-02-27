@@ -15,7 +15,6 @@ class RatesRepository: RepositoryProtocol {
     func fetchRemotesRates(for key: String?, completion: (() -> Void)?) {
         var params: Parameters = [:]
         params["base"] = key ?? "EUR"
-        print(params)
         
         let route = EndPoint(path: "/latest",
                              httpMethod: .get,

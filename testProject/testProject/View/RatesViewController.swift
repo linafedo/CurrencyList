@@ -88,6 +88,12 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
 extension RatesViewController: RatesVMDelegate {
 
     func reloadData() {
+        guard self.tableView.numberOfRows(inSection: 0) == 0
+            else {
+                let allButFirst = (self.tableView.indexPathsForVisibleRows ?? []).filter { $0.row != 0 }
+                self.tableView.reloadRows(at: allButFirst, with: .automatic)
+                return
+        }
         self.tableView.reloadData()
     }
 
