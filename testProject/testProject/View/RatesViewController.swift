@@ -64,13 +64,21 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = self.tableView.dequeueReusableCell(withIdentifier: "RateCell",
-                                                for: indexPath) as? RateCell {
+                                                         for: indexPath) as? RateCell {
             let item = self.ratesViewModel.items[indexPath.row]
             cell.setup(model: item)
             return cell
         }
         
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.ratesViewModel.didSelectRow(at: indexPath.row)
+        
+        let index = IndexPath(row: 0, section: 0)
+        tableView.moveRow(at: indexPath, to: index)
     }
     
 }

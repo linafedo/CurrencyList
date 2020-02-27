@@ -49,6 +49,24 @@ extension RateDataBase {
         }
     }
     
+    static func moveItem(to index: Int, id: String) {
+        guard let r = try? Realm() else { return }
+
+        let list = r.objects(RatesList.self).first?.items
+        
+        if let item = list?.filter({ $0.currency == id }).first,
+            let itemIndex = list?.index(of: item) {
+            
+            do {
+                try r.write {
+                    list?.move(from: itemIndex, to: index)
+                }
+            } catch {
+                print("не переместилось в начало")
+            }
+        }
+    }
+    
     static func contains(by currency: String) -> Bool {
         guard let r = try? Realm() else { return false }
         

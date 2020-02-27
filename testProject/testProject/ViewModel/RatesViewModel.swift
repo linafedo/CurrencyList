@@ -13,6 +13,7 @@ class RatesViewModel {
     private let repository: RepositoryProtocol = RatesRepository()
 
     private var timer = Timer()
+    private var currentKey: String?
     
     var items = [RateViewModel]() {
         didSet {
@@ -25,7 +26,7 @@ class RatesViewModel {
     }
     
     weak var viewDelegate: RatesVMDelegate?
-    
+        
     init(viewDelegate: RatesVMDelegate) {
         self.viewDelegate = viewDelegate
         
@@ -36,12 +37,13 @@ class RatesViewModel {
     
     private func getLocalRates() {
         self.repository.getLocalRates { [weak self] (models) in
+            self?.currentKey = models.first?.currency
             self?.items = self?.map(items: models) ?? []
         }
     }
     
     @objc private func fetchRemoteRates() {
-        self.repository.fetchRemotesRates() { [weak self] in
+        self.repository.fetchRemotesRates(for: self.currentKey) { [weak self] in
             self?.getLocalRates()
         }
     }
@@ -52,6 +54,14 @@ class RatesViewModel {
                                           selector: #selector(self.fetchRemoteRates),
                                           userInfo: nil,
                                           repeats: true)
+    }
+    
+    func didSelectRow(at index: Int) {
+        if index <= self.items.count - 1 {
+            let item = self.items[index]
+            self.currentKey = item.currencyName
+            self.repository.moveRate(to: 0, id: item.currencyName)
+        }
     }
     
 }

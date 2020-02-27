@@ -12,9 +12,10 @@ class RatesRepository: RepositoryProtocol {
 
     private let networkService: NetworkServiceProtocol = NetworkService.shared
     
-    func fetchRemotesRates(completion: (() -> Void)?) {
+    func fetchRemotesRates(for key: String?, completion: (() -> Void)?) {
         var params: Parameters = [:]
-        params["base"] = "EUR"
+        params["base"] = key ?? "EUR"
+        print(params)
         
         let route = EndPoint(path: "/latest",
                              httpMethod: .get,
@@ -30,7 +31,6 @@ class RatesRepository: RepositoryProtocol {
                 items.forEach({ RateDataBase.putItem(item: $0) })
                 
                 completion?()
-                
             } else {
                 // TODO
             }
@@ -57,6 +57,11 @@ class RatesRepository: RepositoryProtocol {
             onFail: {
             // TODO
         })
+    }
+    
+    func moveRate(to index: Int, id: String) {
+        self.networkService.cancelTask()
+        RateDataBase.moveItem(to: index, id: id)
     }
     
 }

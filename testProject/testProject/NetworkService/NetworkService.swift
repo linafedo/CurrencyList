@@ -18,16 +18,14 @@ class NetworkService: NetworkServiceProtocol {
     
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
         let session = URLSession.shared
-        
-        self.task?.cancel()
-        
+                
         do {
             let request = try self.buildRequest(from: route)
             
             task = session.dataTask(with: request, completionHandler: { (data, response, error) in
                 
                 if let response = response as? HTTPURLResponse {
-                    NetworkService.logResponse(response, error: error, httmMethod: route.httpMethod)
+//                    NetworkService.logResponse(response, error: error, httmMethod: route.httpMethod)
                 }
                 
                 if let data = data, let response = response as? HTTPURLResponse {
@@ -45,6 +43,11 @@ class NetworkService: NetworkServiceProtocol {
         }
         
         self.task?.resume()
+    }
+    
+    func cancelTask() {
+        print(" таска отменена ")
+        self.task?.cancel()
     }
         
 }

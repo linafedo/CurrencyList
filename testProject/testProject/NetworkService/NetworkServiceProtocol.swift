@@ -13,4 +13,5 @@ typealias Parameters = [String: Any]
 
 protocol NetworkServiceProtocol {
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion)
+    func cancelTask()
 }

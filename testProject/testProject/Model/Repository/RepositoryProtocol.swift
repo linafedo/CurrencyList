@@ -10,6 +10,7 @@ import Foundation
 
 protocol RepositoryProtocol {
     
-    func fetchRemotesRates(completion: (() -> Void)?)
+    func fetchRemotesRates(for key: String?, completion: (() -> Void)?)
     func getLocalRates(completion: (([RateItem]) -> Void)?)
+    func moveRate(to index: Int, id: String)
 }
