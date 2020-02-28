@@ -16,6 +16,8 @@ class RatesRepository: RepositoryProtocol {
         var params: Parameters = [:]
         params["base"] = key ?? "EUR"
         
+        print(params)
+        
         let route = EndPoint(path: "/latest",
                              httpMethod: .get,
                              parameters: params)
@@ -81,7 +83,7 @@ extension RatesRepository {
                 
                 let item = RateDBModel()
                 item.currency = key
-                item.rate = round(1000 * value) / 1000
+                item.rate = value
                 
                 // if there is no item in db - it needs to get a country name
                 

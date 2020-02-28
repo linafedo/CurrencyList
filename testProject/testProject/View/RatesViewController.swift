@@ -75,10 +75,16 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.ratesViewModel.didSelectRow(at: indexPath.row)
         
-        let index = IndexPath(row: 0, section: 0)
-        tableView.moveRow(at: indexPath, to: index)
+        tableView.performBatchUpdates({
+            let index = IndexPath(row: 0, section: 0)
+            
+            tableView.moveRow(at: indexPath, to: index)
+            tableView.scrollToRow(at: index, at: .none, animated: true)
+        }) { (_) in
+            self.ratesViewModel.didSelectRow(at: indexPath.row)
+        }
+        
     }
     
 }
@@ -87,14 +93,23 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension RatesViewController: RatesVMDelegate {
 
-    func reloadData() {
-        guard self.tableView.numberOfRows(inSection: 0) == 0
-            else {
-                let allButFirst = (self.tableView.indexPathsForVisibleRows ?? []).filter { $0.row != 0 }
-                self.tableView.reloadRows(at: allButFirst, with: .automatic)
-                return
+    func reload(allData: Bool) {
+        guard self.tableView.numberOfRows(inSection: 0) != 0 else {
+            self.tableView.reloadData()
+            return
         }
-        self.tableView.reloadData()
+        
+        if allData {
+            self.tableView.reloadData()
+        } else {
+            let allButFirst = (self.tableView.indexPathsForVisibleRows ?? []).filter { $0.row != 0 }
+            self.tableView.reloadRows(at: allButFirst, with: .automatic)
+        }
+    }
+    
+    func recalculateRate(with value: Double) {
+        
+        
     }
 
 }

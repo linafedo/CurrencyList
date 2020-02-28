@@ -15,11 +15,7 @@ class RatesViewModel {
     private var timer = Timer()
     private var currentKey: String?
     
-    var items = [RateViewModel]() {
-        didSet {
-            self.viewDelegate?.reloadData()
-        }
-    }
+    var items = [RateViewModel]()
     
     var numberOfItems: Int {
         return self.items.count
@@ -30,26 +26,33 @@ class RatesViewModel {
     init(viewDelegate: RatesVMDelegate) {
         self.viewDelegate = viewDelegate
         
-        self.getLocalRates()
+        self.getLocalRates(afterChanges: false)
         self.fetchRemoteRates()
         self.scheduledTimerWithTimeInterval()
     }
     
-    private func getLocalRates() {
+    private func getLocalRates(afterChanges: Bool) {
         self.repository.getLocalRates { [weak self] (models) in
-            self?.currentKey = models.first?.currency
-            self?.items = self?.map(items: models) ?? []
+            guard let self = self else { return }
+            let newItems = self.map(items: models)
+
+            if self.items.isEmpty {
+                self.currentKey = newItems.first?.currencyName
+            }
+            
+            self.items = newItems
+            self.viewDelegate?.reload(allData: afterChanges)
         }
     }
     
     @objc private func fetchRemoteRates() {
         self.repository.fetchRemotesRates(for: self.currentKey) { [weak self] in
-            self?.getLocalRates()
+            self?.getLocalRates(afterChanges: false)
         }
     }
     
     private func scheduledTimerWithTimeInterval() {
-        self.timer = Timer.scheduledTimer(timeInterval: 1.5,
+        self.timer = Timer.scheduledTimer(timeInterval: 2,
                                           target: self,
                                           selector: #selector(self.fetchRemoteRates),
                                           userInfo: nil,
@@ -61,6 +64,8 @@ class RatesViewModel {
             let item = self.items[index]
             self.currentKey = item.currencyName
             self.repository.moveRate(to: 0, id: item.currencyName)
+            self.getLocalRates(afterChanges: true)
+            print("перенеслось в начало - \(item.currencyName)")
         }
     }
     
@@ -73,16 +78,31 @@ extension RatesViewModel {
     func map(items: [RateItem]) -> [RateViewModel] {
         var models = [RateViewModel]()
         
+        let currencyRate = items.filter({ $0.currency == self.currentKey }).first?.rate ?? 1
+        print("self.currentKey - \(currentKey)", currencyRate)
+        
         for item in items {
+            print(item.currency)
             let code = String(item.currency.prefix(2))
             let imageUrl = Utility.getImageUrl(for: code)
             
+            let multiplier = (item.currency == self.currentKey) ? 1 : currencyRate
+            print("multiplier - ", multiplier)
+            print("item.rate - ", item.rate)
+
+            let rate = round(1000 * item.rate * multiplier) / 1000
+            print("rate - ", rate)
+            print("\n")
+
+            
             let model = RateViewModel(currencyName: item.currency,
                                       countryName: item.countryName,
-                                      rate: String(item.rate),
+                                      rate: String(rate),
                                       imageUrl: imageUrl)
             models.append(model)
         }
+        print("\n")
+
         
         return models
     }

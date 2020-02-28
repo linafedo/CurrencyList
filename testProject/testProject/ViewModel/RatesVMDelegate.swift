@@ -9,5 +9,6 @@
 import Foundation
 
 protocol RatesVMDelegate: class {
-    func reloadData()
+    func reload(allData: Bool)
+    func recalculateRate(with value: Double)
 }
