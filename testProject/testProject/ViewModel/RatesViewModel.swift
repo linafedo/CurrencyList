@@ -26,28 +26,28 @@ class RatesViewModel {
     init(viewDelegate: RatesVMDelegate) {
         self.viewDelegate = viewDelegate
         
-        self.getLocalRates(afterChanges: false)
-        self.fetchRemoteRates()
+        self.getLocalRates()
         self.scheduledTimerWithTimeInterval()
     }
     
-    private func getLocalRates(afterChanges: Bool) {
+    private func getLocalRates(refresh: Bool = false) {
         self.repository.getLocalRates { [weak self] (models) in
             guard let self = self else { return }
             let newItems = self.map(items: models)
-
+            
             if self.items.isEmpty {
                 self.currentKey = newItems.first?.currencyName
             }
+            let needRefresh = (newItems.count > self.items.count) ? true : false
             
             self.items = newItems
-            self.viewDelegate?.reload(allData: afterChanges)
+            needRefresh || refresh ? self.viewDelegate?.refreshAll() : self.viewDelegate?.updateCurrentData()
         }
     }
-    
+        
     @objc private func fetchRemoteRates() {
         self.repository.fetchRemotesRates(for: self.currentKey) { [weak self] in
-            self?.getLocalRates(afterChanges: false)
+            self?.getLocalRates()
         }
     }
     
@@ -64,8 +64,7 @@ class RatesViewModel {
             let item = self.items[index]
             self.currentKey = item.currencyName
             self.repository.moveRate(to: 0, id: item.currencyName)
-            self.getLocalRates(afterChanges: true)
-            print("перенеслось в начало - \(item.currencyName)")
+            self.getLocalRates(refresh: true)
         }
     }
     

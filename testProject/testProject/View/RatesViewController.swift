@@ -92,19 +92,14 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: - View model delegate
 
 extension RatesViewController: RatesVMDelegate {
-
-    func reload(allData: Bool) {
-        guard self.tableView.numberOfRows(inSection: 0) != 0 else {
-            self.tableView.reloadData()
-            return
-        }
-        
-        if allData {
-            self.tableView.reloadData()
-        } else {
-            let allButFirst = (self.tableView.indexPathsForVisibleRows ?? []).filter { $0.row != 0 }
-            self.tableView.reloadRows(at: allButFirst, with: .automatic)
-        }
+    
+    func refreshAll() {
+        self.tableView.reloadData()
+    }
+    
+    func updateCurrentData() {
+        let allButFirst = (self.tableView.indexPathsForVisibleRows ?? []).filter { $0.row != 0 }
+        self.tableView.reloadRows(at: allButFirst, with: .automatic)
     }
     
     func recalculateRate(with value: Double) {
