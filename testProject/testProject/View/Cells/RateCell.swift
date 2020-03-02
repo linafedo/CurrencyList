@@ -19,6 +19,7 @@ class RateCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.rateImageView.makeRounded()
         self.rateTextField.delegate = self
         self.rateTextField.isUserInteractionEnabled = false
         self.rateTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -63,6 +64,11 @@ extension RateCell: UITextFieldDelegate {
         let point = (textField.text?.contains(".") == false && textField.text != "") ? true : false
         
         return point
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
         
 }

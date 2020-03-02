@@ -61,6 +61,7 @@ class RatesViewModel {
     
     func didSelectRow(at index: Int) {
         if index <= self.items.count - 1 {
+            
             let item = self.items[index]
             self.currentKey = item.currencyName
             self.repository.moveRate(to: 0, id: item.currencyName)
@@ -72,6 +73,7 @@ class RatesViewModel {
         if let id = self.currentKey,
             let value = value,
             let rate = Double(value) {
+            
             self.repository.updateRate(for: id, value: rate)
             self.getLocalRates()
         }
