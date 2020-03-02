@@ -10,31 +10,44 @@ import UIKit
 
 class RateCell: UITableViewCell {
     
-    @IBOutlet weak var rateImageView: UIImageView!
-    @IBOutlet weak var rateNameLabel: UILabel!
-    @IBOutlet weak var countryNameLabel: UILabel!
-    @IBOutlet weak var rateTextField: UITextField!
+    @IBOutlet private weak var rateImageView: UIImageView!
+    @IBOutlet private weak var rateNameLabel: UILabel!
+    @IBOutlet private weak var countryNameLabel: UILabel!
+    @IBOutlet private weak var rateTextField: UITextField!
+    
+    private var tapOnTextField: ((String?) -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.rateTextField.delegate = self
+        self.rateTextField.isUserInteractionEnabled = false
+        self.rateTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 }
 
 extension RateCell {
     
-    func setup(model: RateViewModel) {
+    func setup(model: RateViewModel, completion: ((String?) -> ())?) {
         self.rateNameLabel.text = model.currencyName
         self.countryNameLabel.text = model.countryName
         self.rateTextField.text = model.rate
+        self.tapOnTextField = completion
         
         if let url = model.imageUrl {
             self.rateImageView.loadImage(url: url)
         }
     }
+    
+    func makeInteractive() {
+        self.rateTextField.isUserInteractionEnabled = true
+    }
 }
 
 extension RateCell: UITextFieldDelegate {
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        self.tapOnTextField?(textField.text)
+    }
     
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
@@ -44,10 +57,12 @@ extension RateCell: UITextFieldDelegate {
         let characterSet = CharacterSet(charactersIn: string)
 
         guard string == "." else {
-          return allowedCharacters.isSuperset(of: characterSet)
+            return allowedCharacters.isSuperset(of: characterSet)
         }
         
-        let point = (textField.text?.contains(".") == true) ? false : true
+        let point = (textField.text?.contains(".") == false && textField.text != "") ? true : false
+        
         return point
     }
+        
 }

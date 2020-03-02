@@ -13,4 +13,5 @@ protocol RepositoryProtocol {
     func fetchRemotesRates(for key: String?, completion: (() -> Void)?)
     func getLocalRates(completion: (([RateItem]) -> Void)?)
     func moveRate(to index: Int, id: String)
+    func updateRate(for id: String, value: Double)
 }

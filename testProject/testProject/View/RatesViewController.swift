@@ -66,7 +66,7 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
         if let cell = self.tableView.dequeueReusableCell(withIdentifier: "RateCell",
                                                          for: indexPath) as? RateCell {
             let item = self.ratesViewModel.items[indexPath.row]
-            cell.setup(model: item)
+            cell.setup(model: item, completion: self.recalculateRate(with:))
             return cell
         }
         
@@ -83,6 +83,7 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.scrollToRow(at: index, at: .none, animated: true)
         }) { (_) in
             self.ratesViewModel.didSelectRow(at: indexPath.row)
+            (tableView.cellForRow(at: indexPath) as? RateCell)?.makeInteractive()
         }
         
     }
@@ -102,9 +103,8 @@ extension RatesViewController: RatesVMDelegate {
         self.tableView.reloadRows(at: allButFirst, with: .automatic)
     }
     
-    func recalculateRate(with value: Double) {
-        
-        
+    func recalculateRate(with value: String?) {
+        self.ratesViewModel.recalculateRate(value: value)
     }
-
+    
 }

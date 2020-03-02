@@ -65,6 +65,13 @@ class RatesRepository: RepositoryProtocol {
         RateDataBase.moveItem(to: index, id: id)
     }
     
+    func updateRate(for id: String, value: Double) {
+        let model = RateDBModel()
+        model.currency = id
+        model.rate = value
+        RateDataBase.putItem(item: model)
+    }
+    
 }
 
 // MARK: - Mapper

@@ -9,7 +9,3 @@ target 'testProject' do
   pod 'RealmSwift'
 
 end
-
-
-Fyi
-Ads asdas das as

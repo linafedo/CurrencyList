@@ -68,6 +68,15 @@ class RatesViewModel {
         }
     }
     
+    func recalculateRate(value: String?) {
+        if let id = self.currentKey,
+            let value = value,
+            let rate = Double(value) {
+            self.repository.updateRate(for: id, value: rate)
+            self.getLocalRates()
+        }
+    }
+        
 }
 
 // MARK: - Map

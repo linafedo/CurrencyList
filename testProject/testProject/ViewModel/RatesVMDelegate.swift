@@ -11,5 +11,5 @@ import Foundation
 protocol RatesVMDelegate: class {
     func refreshAll()
     func updateCurrentData()
-    func recalculateRate(with value: Double)
+    func recalculateRate(with value: String?)
 }
