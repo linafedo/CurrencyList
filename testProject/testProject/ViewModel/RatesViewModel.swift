@@ -57,6 +57,7 @@ class RatesViewModel {
                                           selector: #selector(self.fetchRemoteRates),
                                           userInfo: nil,
                                           repeats: true)
+        RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
     }
     
     func didSelectRow(at index: Int) {

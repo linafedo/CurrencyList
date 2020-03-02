@@ -11,8 +11,8 @@ import UIKit
 class RatesViewController: UIViewController {
 
     lazy private var ratesViewModel = RatesViewModel(viewDelegate: self)
-    var tableView: UITableView!
-
+    private var tableView: UITableView!
+    private var canReload: Bool = true
 }
 
 // MARK: - Life сycle methods
@@ -75,13 +75,20 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.canReload = false
         
         tableView.performBatchUpdates({
             let index = IndexPath(row: 0, section: 0)
             
+            self.tableView.beginUpdates()
+
             tableView.moveRow(at: indexPath, to: index)
             tableView.scrollToRow(at: index, at: .none, animated: true)
+            
+            self.tableView.endUpdates()
+
         }) { (_) in
+            self.canReload = true
             self.ratesViewModel.didSelectRow(at: indexPath.row)
             (tableView.cellForRow(at: indexPath) as? RateCell)?.makeInteractive()
         }
@@ -95,12 +102,16 @@ extension RatesViewController: UITableViewDataSource, UITableViewDelegate {
 extension RatesViewController: RatesVMDelegate {
     
     func refreshAll() {
+        guard self.canReload else { return }
         self.tableView.reloadData()
     }
     
     func updateCurrentData() {
-        let allButFirst = (self.tableView.indexPathsForVisibleRows ?? []).filter { $0.row != 0 }
-        self.tableView.reloadRows(at: allButFirst, with: .automatic)
+        guard self.canReload else { return }
+        UIView.performWithoutAnimation {
+            let allButFirst = (self.tableView.indexPathsForVisibleRows ?? []).filter { $0.row != 0 }
+            self.tableView.reloadRows(at: allButFirst, with: .automatic)
+        }
     }
     
     func recalculateRate(with value: String?) {
