@@ -60,6 +60,10 @@ class RatesViewModel {
         RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
     }
     
+    func viewWillDisappear() {
+        self.timer.invalidate()
+    }
+    
     func didSelectRow(at index: Int) {
         if index <= self.items.count - 1 {
             

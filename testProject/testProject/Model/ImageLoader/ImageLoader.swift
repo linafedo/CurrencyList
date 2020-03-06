@@ -12,7 +12,7 @@ class ImageLoader {
     
     private static var cache = Cache<String, Data>()
     
-    private static func checkCache(key: String) -> UIImage? {
+    private static func isCached(key: String) -> UIImage? {
         
         if let data = self.cache.getValue(forKey: key),
             let image = UIImage(data: data) {
@@ -25,7 +25,7 @@ class ImageLoader {
     static func loadImage(url: URL, completion: ((UIImage?) -> Void)?) {
                 
         let key = url.absoluteString.replacingOccurrences(of: "/", with: "")
-        if let image = self.checkCache(key: key) {
+        if let image = self.isCached(key: key) {
             completion?(image)
             return
         }

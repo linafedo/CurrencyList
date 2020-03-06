@@ -25,6 +25,12 @@ extension RatesViewController {
         self.setup()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.ratesViewModel.viewWillDisappear()
+    }
+    
 }
 
 // MARK: - Setup

@@ -22,7 +22,7 @@ class NetworkService: NetworkServiceProtocol {
         do {
             let request = try self.buildRequest(from: route)
             
-            task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            self.task = session.dataTask(with: request, completionHandler: { (data, response, error) in
                 
                 if let response = response as? HTTPURLResponse {
 //                    NetworkService.logResponse(response, error: error, httmMethod: route.httpMethod)

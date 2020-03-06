@@ -15,7 +15,7 @@ class RateCell: UITableViewCell {
     @IBOutlet private weak var countryNameLabel: UILabel!
     @IBOutlet private weak var rateTextField: UITextField!
     
-    private var tapOnTextField: ((String?) -> ())?
+    private var textFieldDidChange: ((String?) -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +32,7 @@ extension RateCell {
         self.rateNameLabel.text = model.currencyName
         self.countryNameLabel.text = model.countryName
         self.rateTextField.text = model.rate
-        self.tapOnTextField = completion
+        self.textFieldDidChange = completion
         
         if let url = model.imageUrl {
             self.rateImageView.loadImage(url: url)
@@ -47,7 +47,7 @@ extension RateCell {
 extension RateCell: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        self.tapOnTextField?(textField.text)
+        self.textFieldDidChange?(textField.text)
     }
     
     func textField(_ textField: UITextField,
